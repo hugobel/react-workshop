@@ -1,0 +1,107 @@
+{
+  "products": [
+    {
+      "id": "eab04ac7-3de8-417e-a720-8bcce1028ecb",
+      "name": "Espresso",
+      "price": 349,
+      "category": "Coffee"
+    },
+    {
+      "id": "6420eb58-03cd-4e32-94e5-24e0c1c6fcae",
+      "name": "Omelette Sandwich",
+      "price": 899,
+      "category": "Breakfast",
+      "orderLimit": 5
+    },
+    {
+      "id": "03d6de38-1bc7-4887-b85d-dc69399fea43",
+      "name": "Ham and Cheese Sandwich",
+      "price": 699,
+      "category": "Breakfast"
+    },
+    {
+      "id": "d9cf4c09-26ce-4bc7-9821-63700387e4d6",
+      "name": "Iced Mocha",
+      "price": 399,
+      "category": "Coffee"
+    },
+    {
+      "id": "ae2f01a8-a343-413a-92cd-a20babf8a286",
+      "name": "Butter Croissant",
+      "price": 299,
+      "category": "Sweets",
+      "orderLimit": 12
+    },
+    {
+      "id": "9719697e-a466-4edf-beb3-c6c250b1fe6a",
+      "name": "Cinnamon Roll",
+      "price": 529,
+      "category": "Sweets"
+    },
+    {
+      "id": "dedb98ab-0c5d-4600-96c0-e63e50c9bfee",
+      "name": "Strawberry Smoothie",
+      "price": 799,
+      "category": "Juice"
+    },
+    {
+      "id": "53bde464-0375-4e10-9145-fababd11c03e",
+      "name": "Orange Pineapple",
+      "price": 549,
+      "category": "Juice"
+    },
+    {
+      "id": "de9ce742-4821-4208-ac6b-aae8a058faea",
+      "name": "Caramel Macchiato",
+      "price": 549,
+      "category": "Coffee",
+      "orderLimit": 3
+    },
+    {
+      "id": "36ec2baa-171d-44cc-819b-6e6b8265d499",
+      "name": "Bacon & Eggs",
+      "price": 629,
+      "category": "Breakfast",
+      "orderLimit": 3
+    },
+    {
+      "id": "a428697f-5d39-4b55-b9a7-6c53e84188cb",
+      "name": "Slow Jamz (Raspberry)",
+      "price": 999,
+      "category": "Juice",
+      "orderLimit": 4
+    },
+    {
+      "id": "fe7c3c51-9908-4e3c-9334-c9a9ce611bc9",
+      "name": "Beets & Kale",
+      "price": 199,
+      "category": "Juice"
+    },
+    {
+      "id": "4afabbc2-333e-49f3-b8ca-f752bd037352",
+      "name": "Hot Chocolate",
+      "price": 829,
+      "category": "Coffee",
+      "orderLimit": 6
+    },
+    {
+      "id": "31706642-12e9-42a9-bbd4-970baf0d59ca",
+      "name": "Carrot Cake",
+      "price": 469,
+      "category": "Sweets"
+    },
+    {
+      "id": "a81d0b23-8474-4699-99f7-6081641ad13d",
+      "name": "Scone",
+      "price": 299,
+      "category": "Sweets",
+      "orderLimit": 12
+    },
+    {
+      "id": "df78c725-0224-4fe1-af3b-83050c53801b",
+      "name": "Grilled Chicken & Fries",
+      "price": 919,
+      "category": "Breakfast"
+    }
+  ]
+}
