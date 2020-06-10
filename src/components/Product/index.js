@@ -1,30 +1,44 @@
 import React from "react";
-import "./Product.css";
+import "./Product.scss";
 
 function Product(props) {
-  const [quantity, setQuantity] = React.useState(0);
+  const {
+    id,
+    name,
+    price,
+    orderLimit,
+    addToProduct,
+    subtractFromProduct,
+    quantity,
+  } = props;
 
   const subtractOne = () => {
     if (quantity < 1) return;
-    setQuantity(quantity - 1);
+    subtractFromProduct(id);
   };
 
   const addOne = () => {
-    setQuantity(quantity + 1);
+    addToProduct(id);
   };
 
   return (
-    <p className="-product">
-      {props.name} - ${(props.price / 100).toFixed(2)}
-      <span className="-controls">
+    <p className="product">
+      {name} - ${(price / 100).toFixed(2)}
+      <span className="controls">
         <button disabled={quantity < 1} onClick={subtractOne}>
           -
         </button>
         {quantity}
-        <button onClick={addOne}>+</button>
+        <button disabled={quantity >= orderLimit} onClick={addOne}>
+          +
+        </button>
       </span>
     </p>
   );
 }
+
+Product.defaultProps = {
+  orderLimit: Infinity,
+};
 
 export default Product;

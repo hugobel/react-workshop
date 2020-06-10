@@ -1,0 +1,25 @@
+.product {
+  width: 400px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 10px;
+  font-size: 18px;
+
+  .controls {
+    display: flex;
+    width: 90px;
+    justify-content: space-around;
+    padding: 5px;
+    background: #eee;
+    border: 1px solid #bbb;
+    border-radius: 3px;
+    font-weight: bold;
+
+    button {
+      background: white;
+      border: 1px solid #bbb;
+      border-radius: 2px;
+    }
+  }
+}
