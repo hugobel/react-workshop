@@ -1,5 +1,6 @@
 import React from "react";
 import "./Product.scss";
+import { toCurrency } from "../../utils/number";
 
 function Product(props) {
   const {
@@ -23,7 +24,7 @@ function Product(props) {
 
   return (
     <p className="product">
-      {name} - ${(price / 100).toFixed(2)}
+      {name} - {toCurrency(price)}
       <span className="controls">
         <button disabled={quantity < 1} onClick={subtractOne}>
           -
