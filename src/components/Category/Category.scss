@@ -1,0 +1,33 @@
+@import "../../styles/colors";
+
+.category {
+  height: 25%;
+  color: $smoke;
+  display: flex;
+  align-items: center;
+  font-size: 48px;
+  padding: 0 45px;
+  transition: height 300ms ease-in;
+
+  &:nth-child(1) {
+    background-color: $plum;
+  }
+
+  &:nth-child(2) {
+    background-color: $dusk;
+  }
+
+  &:nth-child(3) {
+    background-color: $coral;
+  }
+
+  &:nth-child(4) {
+    background-color: $peach;
+  }
+
+  &.-expanded {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+}

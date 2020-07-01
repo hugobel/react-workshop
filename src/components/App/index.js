@@ -1,7 +1,8 @@
 import React from "react";
 import axios from "axios";
+import Accordion from "../Accordion";
 import Cart from "../Cart";
-import Category from "../Category";
+import Loading from "../Loading";
 import Nav from "../Nav";
 import "./App.scss";
 
@@ -48,7 +49,11 @@ function App() {
   }
 
   if (products.length === 0) {
-    return <p>Loading...</p>;
+    return (
+      <div className="App">
+        <Loading />
+      </div>
+    );
   }
 
   return (
@@ -57,19 +62,14 @@ function App() {
       {activePanel === "cart" && (
         <Cart items={cartItems} directory={products} />
       )}
-      {activePanel === "menu" &&
-        Object.entries(productsByCategory).map(([name, entries]) => {
-          return (
-            <Category
-              key={name}
-              name={name}
-              entries={entries}
-              cartItems={cartItems}
-              addToProduct={addToProduct}
-              subtractFromProduct={subtractFromProduct}
-            />
-          );
-        })}
+      {activePanel === "menu" && (
+        <Accordion
+          products={productsByCategory}
+          cartItems={cartItems}
+          addToProduct={addToProduct}
+          subtractFromProduct={subtractFromProduct}
+        />
+      )}
     </div>
   );
 }

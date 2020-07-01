@@ -13,12 +13,14 @@ function Product(props) {
     quantity,
   } = props;
 
-  const subtractOne = () => {
+  const subtractOne = (event) => {
+    event.stopPropagation();
     if (quantity < 1) return;
     subtractFromProduct(id);
   };
 
-  const addOne = () => {
+  const addOne = (event) => {
+    event.stopPropagation();
     addToProduct(id);
   };
 

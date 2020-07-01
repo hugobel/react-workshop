@@ -1,0 +1,20 @@
+@import "../../styles/colors";
+
+.header {
+  display: flex;
+  background: $slate;
+  height: 120px;
+  padding: 30px 45px;
+  justify-content: space-between;
+
+  .icon {
+    height: 65px;
+    fill: $smoke;
+    cursor: pointer;
+    margin: 0 15px;
+
+    &.-logo {
+      margin-right: auto;
+    }
+  }
+}
