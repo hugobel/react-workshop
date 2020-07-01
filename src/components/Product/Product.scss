@@ -1,3 +1,5 @@
+@import "../../styles/colors.scss";
+
 .product {
   width: 100%;
   display: flex;
@@ -8,19 +10,20 @@
 
   .controls {
     display: flex;
-    width: 90px;
+    width: 100px;
     justify-content: space-around;
     padding: 5px;
-    background: #eee;
-    border: 1px solid #bbb;
+    background: rgba(black, 0.25);
+    border: 1px solid rgba(black, 0.4);
     border-radius: 3px;
     font-weight: bold;
-    color: #333;
+    color: $smoke;
 
     button {
-      background: white;
+      background: rgba(white, 0.4);
       border: 1px solid #bbb;
       border-radius: 2px;
+      margin: 0 6px;
     }
   }
 }

@@ -1,0 +1,23 @@
+@import "../../styles/colors.scss";
+
+.cart {
+  width: 100%;
+  color: $smoke;
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 120px);
+
+  .cart-items {
+    overflow-y: auto;
+    max-height: 100%;
+  }
+
+  .cart-item {
+    font-size: 24px;
+  }
+
+  .cart-total {
+    font-size: 36px;
+    margin-top: auto;
+  }
+}

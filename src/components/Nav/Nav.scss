@@ -6,6 +6,12 @@
   height: 120px;
   padding: 30px 45px;
   justify-content: space-between;
+  flex-wrap: wrap;
+  transition: height 250ms ease-in;
+
+  &.-expanded {
+    height: 800px;
+  }
 
   .icon {
     height: 65px;

@@ -1,13 +1,26 @@
 import React from "react";
+import classnames from "classnames";
 import Category from "../Category";
 import "./Accordion.scss";
 
 function Accordion(props) {
-  const [activeTab, setActiveTab] = React.useState(null);
-  const { products, cartItems, addToProduct, subtractFromProduct } = props;
+  const {
+    activeTab,
+    onTabSelect,
+    products,
+    cartItems,
+    addToProduct,
+    subtractFromProduct,
+    isCollapsed,
+  } = props;
+
+  const wrapperClassName = classnames("accordion", {
+    "-has-active-tab": activeTab && !isCollapsed,
+    "-collapsed": isCollapsed,
+  });
 
   return (
-    <div className={`accordion ${activeTab ? "-has-active-tab" : ""}`}>
+    <div className={wrapperClassName}>
       {Object.entries(products).map(([name, entries]) => {
         return (
           <Category
@@ -17,8 +30,8 @@ function Accordion(props) {
             cartItems={cartItems}
             addToProduct={addToProduct}
             subtractFromProduct={subtractFromProduct}
-            isExpanded={activeTab === name}
-            setActiveTab={setActiveTab}
+            isExpanded={!isCollapsed && activeTab === name}
+            setActiveTab={onTabSelect}
           />
         );
       })}

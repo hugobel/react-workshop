@@ -5,6 +5,11 @@
   flex-direction: column;
   overflow: hidden;
   height: 1080px;
+  transition: height 250ms ease-in;
+
+  &.-collapsed {
+    height: 400px;
+  }
 
   &.-has-active-tab > div {
     height: 10%;

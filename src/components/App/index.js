@@ -4,6 +4,8 @@ import Accordion from "../Accordion";
 import Cart from "../Cart";
 import Loading from "../Loading";
 import Nav from "../Nav";
+import Search from "../Search";
+import { filterByName } from "../../utils/collection";
 import "./App.scss";
 
 function App() {
@@ -11,6 +13,11 @@ function App() {
   const [cartItems, setCartItems] = React.useState({});
   const [error, setError] = React.useState(null);
   const [activePanel, setActivePanel] = React.useState("menu");
+  const [activeTab, setActiveTab] = React.useState(null);
+  const [searchTerm, setSearchTerm] = React.useState("");
+  const isHeaderExpanded = activePanel === "cart" || activePanel === "search";
+
+  const searchResults = filterByName(products, searchTerm);
 
   const addToProduct = (productId) => {
     const currentQuantity = cartItems[productId] || 0;
@@ -23,7 +30,16 @@ function App() {
   };
 
   const handleNav = (panel) => {
+    if (panel === activePanel) return;
+
     setActivePanel(panel);
+    setActiveTab(null);
+    setSearchTerm("");
+  };
+
+  const handleTabSelect = (tab) => {
+    setActiveTab(tab);
+    setActivePanel("menu");
   };
 
   React.useEffect(() => {
@@ -58,18 +74,27 @@ function App() {
 
   return (
     <div className="App">
-      <Nav onSelect={handleNav} />
-      {activePanel === "cart" && (
-        <Cart items={cartItems} directory={products} />
-      )}
-      {activePanel === "menu" && (
-        <Accordion
-          products={productsByCategory}
-          cartItems={cartItems}
-          addToProduct={addToProduct}
-          subtractFromProduct={subtractFromProduct}
-        />
-      )}
+      <Nav onSelect={handleNav} isExpanded={isHeaderExpanded}>
+        {activePanel === "cart" && (
+          <Cart items={cartItems} directory={products} />
+        )}
+        {activePanel === "search" && (
+          <Search
+            value={searchTerm}
+            onChange={setSearchTerm}
+            results={searchResults}
+          />
+        )}
+      </Nav>
+      <Accordion
+        activeTab={activeTab}
+        onTabSelect={handleTabSelect}
+        isCollapsed={isHeaderExpanded}
+        products={productsByCategory}
+        cartItems={cartItems}
+        addToProduct={addToProduct}
+        subtractFromProduct={subtractFromProduct}
+      />
     </div>
   );
 }
