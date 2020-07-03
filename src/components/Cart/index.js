@@ -3,7 +3,7 @@ import { toCurrency } from "../../utils/number";
 import "./Cart.scss";
 
 function Cart(props) {
-  const { items, directory } = props;
+  const { items, directory, clearProduct, sendOrder } = props;
 
   const filteredEntries = Object.entries(items)
     .filter(([id, quantity]) => quantity > 0)
@@ -23,12 +23,23 @@ function Cart(props) {
           const { id, name, price, quantity } = entry;
           return (
             <p key={id} className="cart-item">
+              <button
+                className="remove-item-btn"
+                onClick={() => clearProduct(id)}
+              >
+                x
+              </button>
               {quantity} {name} - {toCurrency(price * quantity)}
             </p>
           );
         })}
       </div>
       <p className="cart-total">Total: {toCurrency(total)}</p>
+      {total > 0 && (
+        <button onClick={sendOrder} className="buy-btn">
+          Buy!
+        </button>
+      )}
     </div>
   );
 }

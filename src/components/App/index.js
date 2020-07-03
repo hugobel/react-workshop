@@ -29,6 +29,10 @@ function App() {
     setCartItems({ ...cartItems, [productId]: currentQuantity - 1 });
   };
 
+  const clearProduct = (productId) => {
+    setCartItems({ ...cartItems, [productId]: 0 });
+  };
+
   const handleNav = (panel) => {
     if (panel === activePanel) return;
 
@@ -42,6 +46,13 @@ function App() {
     setActivePanel("menu");
   };
 
+  const sendOrder = () => {
+    axios.post("https://reqres.in/api/users", { items: cartItems }).then(() => {
+      setCartItems({});
+      alert("Order success!");
+    });
+  };
+
   React.useEffect(() => {
     axios
       .get(process.env.REACT_APP_API_URL)
@@ -50,6 +61,7 @@ function App() {
       })
       .catch(() => {
         setError("API Call failed");
+        5;
       });
   }, []);
 
@@ -76,13 +88,22 @@ function App() {
     <div className="App">
       <Nav onSelect={handleNav} isExpanded={isHeaderExpanded}>
         {activePanel === "cart" && (
-          <Cart items={cartItems} directory={products} />
+          <Cart
+            items={cartItems}
+            directory={products}
+            clearProduct={clearProduct}
+            sendOrder={sendOrder}
+          />
         )}
         {activePanel === "search" && (
           <Search
             value={searchTerm}
             onChange={setSearchTerm}
             results={searchResults}
+            cartItems={cartItems}
+            addToProduct={addToProduct}
+            subtractFromProduct={subtractFromProduct}
+            navToCategory={handleTabSelect}
           />
         )}
       </Nav>

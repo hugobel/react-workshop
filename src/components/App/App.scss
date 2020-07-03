@@ -1,7 +1,10 @@
+@import "../../styles/colors";
+
 .App {
   text-align: center;
   width: 720px;
   height: 1200px;
   border: 1px solid black;
   margin: 0 auto;
+  color: $smoke;
 }

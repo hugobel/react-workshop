@@ -1,16 +1,31 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import Product from "../Product";
 import "./Search.scss";
 
 function Search(props) {
-  const { value, onChange, results } = props;
+  const inputRef = useRef();
+  const {
+    value,
+    onChange,
+    results,
+    addToProduct,
+    subtractFromProduct,
+    cartItems,
+    navToCategory,
+  } = props;
 
   const handleChange = (event) => {
     onChange(event.target.value);
   };
 
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
+
   return (
     <div className="searchbox">
       <input
+        ref={inputRef}
         className="input"
         type="text"
         value={value}
@@ -18,7 +33,16 @@ function Search(props) {
       />
       {results.length > 0 &&
         results.map((product) => {
-          return <p key={product.id}>{product.name}</p>;
+          return (
+            <Product
+              key={product.id}
+              {...product}
+              addToProduct={addToProduct}
+              subtractFromProduct={subtractFromProduct}
+              quantity={cartItems[product.id] || 0}
+              navToCategory={navToCategory}
+            />
+          );
         })}
     </div>
   );

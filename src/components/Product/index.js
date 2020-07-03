@@ -6,11 +6,13 @@ function Product(props) {
   const {
     id,
     name,
+    category,
     price,
     orderLimit,
     addToProduct,
     subtractFromProduct,
     quantity,
+    navToCategory,
   } = props;
 
   const subtractOne = (event) => {
@@ -24,9 +26,14 @@ function Product(props) {
     addToProduct(id);
   };
 
+  const handleNameClick = (event) => {
+    event.stopPropagation();
+    navToCategory(category);
+  };
+
   return (
     <p className="product">
-      {name} - {toCurrency(price)}
+      <span onClick={handleNameClick}>{name}</span> - {toCurrency(price)}
       <span className="controls">
         <button disabled={quantity < 1} onClick={subtractOne}>
           -
@@ -42,6 +49,7 @@ function Product(props) {
 
 Product.defaultProps = {
   orderLimit: Infinity,
+  navToCategory: () => {},
 };
 
 export default Product;
